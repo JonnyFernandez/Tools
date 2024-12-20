@@ -94,8 +94,9 @@
     padding: 0.75rem 1rem;
     font-size: 1rem;
     border-radius: 5px;
-    cursor: pointer;
+    /* cursor: pointer; */
     transition: background-color 0.3s;
+    text-decoration: none;
 }
 
 .cardButton:hover {

@@ -108,21 +108,9 @@
 @media (max-width: 768px) {
     .tableContainer{
         width: 100%;
-        /* background-color: red; */
+        overflow-y: scroll;
     }
-    /* .table {
-        width: 200px;
-        border-collapse: collapse;
-        margin: 2rem 0;
-        background-color: red;
-    }
-    
-    .table th, .table td {
-        padding: 15px;
-        text-align: center;
-        border: 1px solid #ddd;
-        background-color: red;
-    } */
+  
 
     
 }

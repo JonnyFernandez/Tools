@@ -25,7 +25,7 @@ const Home = () => {
                     </div>
 
                     <div className={styles.card}>
-                        <h2>📋 Presupuestos</h2>
+                        <h2>📋 Presupuestos Marelis</h2>
                         <p>Crea presupuestos rápidos y profesionales para tus clientes, con detalles precisos y listos para enviar.</p>
                         <NavLink to='/butget' className={styles.cardButton}>Ir a Presupuestos</NavLink>
                     </div>

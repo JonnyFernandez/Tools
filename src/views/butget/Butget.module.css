@@ -1,0 +1,128 @@
+/* General */
+/* Ajustar el ancho del nav */
+.home {
+    /* background: linear-gradient(135deg, #74ebd5, #acb6e5); */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    font-family: 'Arial', sans-serif;
+}
+ 
+.card {
+    background-color: #fff;
+    width: 100%;
+    max-width: 900px;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+
+.title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #007bff;
+}
+
+.inputGroup {
+    position: relative;
+    width: 100%;
+    /* background-color: red; */
+
+
+}
+
+.inputGroup input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #007bff;
+    border-radius: 8px;
+    outline: none;
+    transition: 0.3s;
+    margin-bottom: 15px;
+    /* background-color: red; */
+
+}
+
+.inputGroup label {
+    position: absolute;
+    top: 16px;
+    left: 12px;
+    transition: 0.3s;
+}
+
+.inputGroup input:focus + label,
+.inputGroup input:not(:placeholder-shown) + label {
+    top: -10px;
+    font-size: 0.85rem;
+    color: #007bff;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    /* background-color: red; */
+}
+
+.table th, .table td {
+    padding: 15px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.addButton, .exportButton, .deleteButton {
+    background-color: #007bff;
+    color: white;
+    padding: 0.75rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.addButton:hover, .exportButton:hover, .deleteButton:hover {
+    background-color: #0056b3;
+}
+
+.deleteButton {
+    background-color: #e74c3c;
+}
+
+.deleteButton:hover {
+    background-color: #c0392b;
+}
+
+.total {
+    text-align: right;
+    margin-top: 1rem;
+}
+
+.exportButton {
+    width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .tableContainer{
+        width: 100%;
+        /* background-color: red; */
+    }
+    /* .table {
+        width: 200px;
+        border-collapse: collapse;
+        margin: 2rem 0;
+        background-color: red;
+    }
+    
+    .table th, .table td {
+        padding: 15px;
+        text-align: center;
+        border: 1px solid #ddd;
+        background-color: red;
+    } */
+
+    
+}

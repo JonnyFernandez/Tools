@@ -1,7 +1,12 @@
 import styles from './Home.module.css';
 import { NavLink } from 'react-router-dom';
+import { apiProd } from '../../api/product';
 
 const Home = () => {
+
+    const info = apiProd()
+    console.log(info);
+
     return (
         <div className={styles.homeContainer}>
 

@@ -6,12 +6,19 @@ const LocalSale = () => {
         { id: '001', name: 'Producto 1', stock: 100, description: 'Descripción del producto 1', image: '', price: 10 },
         { id: '002', name: 'Producto 2', stock: 50, description: 'Descripción del producto 2', image: '', price: 20 },
         { id: '003', name: 'Producto 3', stock: 200, description: 'Descripción del producto 3', image: '', price: 15 },
-    ]); // Productos disponibles en el inventario
+        { id: '004', name: 'cloro liquido', stock: 200, description: 'Descripción del producto 3', image: '', price: 760 },
+        { id: '005', name: 'cloro DL', stock: 200, description: 'Descripción del producto 3', image: '', price: 7500 },
+        { id: '006', name: 'cloro DR', stock: 200, description: 'Descripción del producto 3', image: '', price: 7500 },
+        { id: '007', name: 'cloro MF', stock: 200, description: 'Descripción del producto 3', image: '', price: 7900 },
+    ]);
 
     const [cart, setCart] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
-
     const [discount, setDiscount] = useState(0);
+    const [paymentMethod, setPaymentMethod] = useState(''); // 'cash' o 'electronic'
+
+
+
 
     // Filtrar productos por nombre o código
     const filteredProducts = products.filter(
@@ -53,6 +60,15 @@ const LocalSale = () => {
         setCart(cart.filter((product) => product.id !== id));
     };
 
+    // Manejar cambio en el método de pago
+    const handlePaymentMethodChange = (method) => {
+        setPaymentMethod(method);
+    };
+
+    const data = { 'cart': cart, 'total-w-discount': calculateTotalWithDiscount(), 'PaymentMethod': paymentMethod, 'total': calculateSubTotal(), 'discount': discount, 'user': '', 'date': '' }
+    console.log(data);
+
+
     return (
         <div className={x.home}>
             <div className={x.card}>
@@ -67,7 +83,7 @@ const LocalSale = () => {
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                         />
-                        {/* <label>Buscar por nombre o código</label> */}
+                        {/* <label>Buscar Producto</label> */}
                     </div>
                 </div>
 
@@ -140,6 +156,31 @@ const LocalSale = () => {
                             ))}
                         </tbody>
                     </table>
+                </div>
+
+                {/* Métodos de Pago */}
+                <div className={x.paymentMethods}>
+                    <h4>Método de Pago:</h4>
+                    <div>
+                        <label>
+                            <input
+                                type="radio"
+                                value="cash"
+                                checked={paymentMethod === 'cash'}
+                                onChange={() => handlePaymentMethodChange('cash')}
+                            />
+                            Efectivo
+                        </label>
+                        <label>
+                            <input
+                                type="radio"
+                                value="electronic"
+                                checked={paymentMethod === 'electronic'}
+                                onChange={() => handlePaymentMethodChange('electronic')}
+                            />
+                            Pago Electrónico
+                        </label>
+                    </div>
                 </div>
 
                 {/* Totales */}

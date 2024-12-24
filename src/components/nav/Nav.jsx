@@ -25,9 +25,9 @@ const Nav = () => {
                                 Dropdown link
                             </a>
                             <ul className="dropdown-menu">
-                                <li><a className="dropdown-item" href="#">Action</a></li>
-                                <li><a className="dropdown-item" href="#">Another action</a></li>
-                                <li><a className="dropdown-item" href="#">Something else here</a></li>
+                                <li><NavLink className="dropdown-item" to={'/local-sale'}>Venta Local</NavLink></li>
+                                <li><NavLink className="dropdown-item" >Another action</NavLink></li>
+                                <li><NavLink className="dropdown-item" >Something else here</NavLink></li>
                             </ul>
                         </li>
                     </ul>

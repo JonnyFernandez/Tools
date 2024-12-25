@@ -1,7 +1,12 @@
 import styles from './Home.module.css';
 import { NavLink } from 'react-router-dom';
 
+
 const Home = () => {
+
+
+
+
     return (
         <div className={styles.homeContainer}>
 
@@ -11,9 +16,9 @@ const Home = () => {
                 <p className={styles.subtitle}>
                     Usa esta herramienta para calcular los precios de venta de tus productos y crear presupuestos personalizados.
                 </p>
-                {/* <button className={styles.ctaButton}>
-                    Comenzar ahora
-                </button> */}
+                <button className={styles.ctaButton}>
+                    Venta Local
+                </button>
             </header>
 
             <main className={styles.mainContent}>
@@ -28,6 +33,18 @@ const Home = () => {
                         <h2>📋 Presupuestos Marelis</h2>
                         <p>Crea presupuestos rápidos y profesionales para tus clientes, con detalles precisos y listos para enviar.</p>
                         <NavLink to='/butget' className={styles.cardButton}>Ir a Presupuestos</NavLink>
+                    </div>
+
+                    <div className={styles.card}>
+                        <h2>💵 Ventas Locales</h2>
+                        <p>Espacio para las ventas locales, con descuento de stock, opcion para dejar una reseña de la venta, aplicar descuestos si el cliente lo merece porque es vacano.</p>
+                        <NavLink to='/local-sale' className={styles.cardButton}>Ir a Ventas Locales</NavLink>
+                    </div>
+
+                    <div className={styles.card}>
+                        <h2>📒 Gestion Producto</h2>
+                        <p>Espacio para las ventas locales, con descuento de stock, opcion para dejar una reseña de la venta, aplicar descuestos si el cliente lo merece porque es vacano.</p>
+                        <NavLink to='/prod-management' className={styles.cardButton}>Ir a Gestion Producto</NavLink>
                     </div>
                 </section>
 

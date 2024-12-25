@@ -1,0 +1,31 @@
+@import '../butget/Butget.module.css'; 
+
+/* Añadir estilos específicos si es necesario */
+
+.discount {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.discount input {
+    margin-left: 10px;
+    padding: 5px;
+    border: 1px solid #007bff;
+    border-radius: 8px;
+    width: 100px;
+}
+
+.paymentMethods {
+    margin: 1rem 0;
+}
+
+.paymentMethods label {
+    margin-right: 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.paymentMethods input {
+    margin-right: 0.5rem;
+}

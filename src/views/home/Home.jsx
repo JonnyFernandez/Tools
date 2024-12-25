@@ -1,11 +1,11 @@
 import styles from './Home.module.css';
 import { NavLink } from 'react-router-dom';
-import { apiProd } from '../../api/product';
+
 
 const Home = () => {
 
-    const info = apiProd()
-    console.log(info);
+
+
 
     return (
         <div className={styles.homeContainer}>
@@ -39,6 +39,12 @@ const Home = () => {
                         <h2>💵 Ventas Locales</h2>
                         <p>Espacio para las ventas locales, con descuento de stock, opcion para dejar una reseña de la venta, aplicar descuestos si el cliente lo merece porque es vacano.</p>
                         <NavLink to='/local-sale' className={styles.cardButton}>Ir a Ventas Locales</NavLink>
+                    </div>
+
+                    <div className={styles.card}>
+                        <h2>📒 Gestion Producto</h2>
+                        <p>Espacio para las ventas locales, con descuento de stock, opcion para dejar una reseña de la venta, aplicar descuestos si el cliente lo merece porque es vacano.</p>
+                        <NavLink to='/prod-management' className={styles.cardButton}>Ir a Gestion Producto</NavLink>
                     </div>
                 </section>
 

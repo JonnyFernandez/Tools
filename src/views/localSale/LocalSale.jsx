@@ -1,16 +1,18 @@
 import { useState } from 'react';
 import x from './LocalSale.module.css';
+import { apiProd } from '../../api/product';
+import { getProd } from '../../redux/productSlice';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 const LocalSale = () => {
-    const [products] = useState([
-        { id: '001', name: 'Producto 1', stock: 100, description: 'Descripción del producto 1', image: '', price: 10 },
-        { id: '002', name: 'Producto 2', stock: 50, description: 'Descripción del producto 2', image: '', price: 20 },
-        { id: '003', name: 'Producto 3', stock: 200, description: 'Descripción del producto 3', image: '', price: 15 },
-        { id: '004', name: 'cloro liquido', stock: 200, description: 'Descripción del producto 3', image: '', price: 760 },
-        { id: '005', name: 'cloro DL', stock: 200, description: 'Descripción del producto 3', image: '', price: 7500 },
-        { id: '006', name: 'cloro DR', stock: 200, description: 'Descripción del producto 3', image: '', price: 7500 },
-        { id: '007', name: 'cloro MF', stock: 200, description: 'Descripción del producto 3', image: '', price: 7900 },
-    ]);
+
+    const dispatch = useDispatch()
+    const info = apiProd()
+    useEffect(() => {
+        dispatch(getProd(info))
+    }, [])
+    const { products } = useSelector(state => state.prod)
 
     const [cart, setCart] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
@@ -18,7 +20,44 @@ const LocalSale = () => {
     const [paymentMethod, setPaymentMethod] = useState(''); // 'cash' o 'electronic'
 
 
+    // Estado del formulario de producto
+    const [newProduct, setNewProduct] = useState({
+        name: "",
+        price: "",
+        quantity: "",
+        tax: "",
+    });
 
+    // Manejar cambios en los campos del formulario
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setNewProduct((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
+    };
+
+    // Agregar el producto al carrito
+    const handleAddToCart = (e) => {
+        e.preventDefault();
+
+        // Validaciones básicas
+        if (!newProduct.name || !newProduct.price || !newProduct.quantity) {
+            alert("Todos los campos son obligatorios.");
+            return;
+        }
+
+        // Crear un producto con datos válidos
+        const productToAdd = {
+            ...newProduct,
+            price: parseFloat(newProduct.price),
+            quantity: parseInt(newProduct.quantity, 10),
+            tax: parseFloat(newProduct.tax),
+        };
+
+        setCart((prevCart) => [...prevCart, productToAdd]); // Añadir al carrito
+        setNewProduct({ name: "", price: "", quantity: "", tax: "" }); // Limpiar el formulario
+    };
 
     // Filtrar productos por nombre o código
     const filteredProducts = products.filter(
@@ -86,6 +125,41 @@ const LocalSale = () => {
                         {/* <label>Buscar Producto</label> */}
                     </div>
                 </div>
+
+                <div>
+                    <form onSubmit={handleAddToCart}>
+                        <input
+                            type="text"
+                            name="name"
+                            placeholder="Nombre del Producto"
+                            value={newProduct.name}
+                            onChange={handleInputChange}
+                        />
+                        <input
+                            type="number"
+                            name="price"
+                            placeholder="Precio"
+                            value={newProduct.price}
+                            onChange={handleInputChange}
+                        />
+                        <input
+                            type="number"
+                            name="quantity"
+                            placeholder="Cantidad"
+                            value={newProduct.quantity}
+                            onChange={handleInputChange}
+                        />
+                        <input
+                            type="number"
+                            name="tax"
+                            placeholder="Impuesto (%)"
+                            value={newProduct.tax}
+                            onChange={handleInputChange}
+                        />
+                        <button type="submit">Añadir al Carrito</button>
+                    </form>
+                </div>
+
 
                 {/* Lista de productos filtrados */}
                 {searchQuery && (

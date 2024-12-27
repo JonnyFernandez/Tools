@@ -1,0 +1,125 @@
+/* General Styles */
+.addProd {
+    width: 600px;
+    max-width: 100%;
+    min-height: 500px;
+    margin: auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    font-family: 'Arial', sans-serif;
+    
+}
+
+.addProd h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.infoContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    position: relative;
+    width: 100%;
+}
+.inputsContainer label {
+    position: absolute;
+    top: 16px;
+    left: 12px;
+    transition: 0.3s;
+}
+
+
+.divImage {
+    flex: 1;
+    height: 200px;
+    background-color: #f4f4f4;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 16px;
+    color: #999;
+    overflow: hidden;
+}
+
+.inputsContainer {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.inputsContainer input,
+.inputsContainer textarea,
+.inputsContainer button {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+.inputsContainer input:focus,
+.inputsContainer textarea:focus {
+    border-color: #4a90e2;
+    outline: none;
+    background-color: #fff;
+}
+
+.inputsContainer textarea {
+    resize: none;
+}
+
+.inputsContainer button {
+    padding: 12px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #4a90e2;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.inputsContainer button:hover {
+    background-color: #357abd;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .addProd {
+        padding: 15px;
+        min-height: 440px;
+    }
+
+    .infoContainer {
+        flex-direction: column;
+        gap: 15px;
+        /* background-color: red; */
+        /* overflow-y: scroll; */
+    }
+
+    .divImage {
+        display: none;
+    }
+
+    .inputsContainer {
+        max-height: 395px; /* Altura limitada en pantallas pequeñas */
+        overflow-y: auto; /* Habilita el scroll vertical */
+        padding-right: 10px; /* Añade espacio para el scroll */
+    }
+}

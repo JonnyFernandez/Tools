@@ -32,7 +32,20 @@ const prodSlice = createSlice({
         setNextPage: (state) => {
             state.currentPage++;
         },
+        paginate: (state, action) => {
+            const { page, pageSize } = action.payload;
+            const start = (page - 1) * pageSize;
+            const end = start + pageSize;
+            state.products = state.backup.slice(start, end);
+            state.currentPage = page;
+        },
+        filterLowStock: (state, action) => {
 
+            const filtered = action.payload === 'min'
+                ? state.backup.filter(product => product.stock < product.minStock && product.stock > 0)
+                : state.backup.filter(product => product.stock === 0)
+            state.products = filtered;
+        },
         // Filtra productos por nombre
         searchName: (state, action) => {
             const name = action.payload.toLowerCase();
@@ -76,10 +89,13 @@ const prodSlice = createSlice({
 
         // Filtra productos por categoría
         filterCategory: (state, action) => {
-            const filtered = state.backup.filter(item => item.category === action.payload);
+            const filtered = state.backup.filter(item => item.category.includes(action.payload));
             state.products = filtered.length ? filtered : state.backup;
         },
-
+        filterDistribuitor: (state, action) => {
+            const filtered = state.backup.filter(item => item.distribuitor.includes(action.payload));
+            state.products = filtered.length ? filtered : state.backup;
+        },
         // Ordena productos por precio
         filterPrice: (state, action) => {
             const sorted = [...state.backup].sort((a, b) =>
@@ -106,6 +122,8 @@ export const {
     postDetails,
     filterCategory,
     filterPrice,
+    filterLowStock,
+    filterDistribuitor,
 } = prodSlice.actions;
 
 export default prodSlice.reducer;

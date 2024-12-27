@@ -17,7 +17,7 @@ const LocalSale = () => {
     const [cart, setCart] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
     const [discount, setDiscount] = useState(0);
-    const [paymentMethod, setPaymentMethod] = useState(''); // 'cash' o 'electronic'
+    const [paymentMethod, setPaymentMethod] = useState('');
 
 
     // Estado del formulario de producto

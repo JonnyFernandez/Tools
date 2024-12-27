@@ -26,8 +26,8 @@ const Nav = () => {
                             </a>
                             <ul className="dropdown-menu">
                                 <li><NavLink className="dropdown-item" to={'/local-sale'}>Venta Local</NavLink></li>
-                                <li><NavLink className="dropdown-item" >Another action</NavLink></li>
-                                <li><NavLink className="dropdown-item" >Something else here</NavLink></li>
+                                <li><NavLink className="dropdown-item" to={'/prod-management'} >Gestion de Producto</NavLink></li>
+                                {/* <li><NavLink className="dropdown-item" >Something else here</NavLink></li> */}
                             </ul>
                         </li>
                     </ul>

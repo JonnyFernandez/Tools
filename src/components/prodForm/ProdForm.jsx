@@ -31,7 +31,7 @@ const ProdForm = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        // Aquí puedes agregar la lógica para enviar los datos
+
         console.log("Formulario enviado");
     };
 

@@ -18,9 +18,11 @@
 
 .addProd h2 {
     font-size: 24px;
-    color: #333;
+    color: #fff;
     margin-bottom: 10px;
     text-align: center;
+    background-color: #357abd;
+    width: 100%;
 }
 
 .infoContainer {
@@ -39,6 +41,7 @@
 }
 
 
+/* imagen */
 .divImage {
     flex: 1;
     height: 200px;
@@ -49,10 +52,29 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-size: 16px;
-    color: #999;
+    font-size: 14px;
+    color: #797474;
     overflow: hidden;
+    position: relative; /* Para un mejor control de la imagen */
 }
+
+.divImage img {
+    max-width: 90%; /* Limita el ancho máximo */
+    max-height: 90%; /* Limita la altura máxima */
+    object-fit: contain; /* Mantiene la proporción de la imagen */
+    border-radius: 5px; /* Opcional: redondea las esquinas de la imagen */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Añade un ligero efecto de sombra */
+}
+
+.divImage p {
+    margin: 0;
+    padding: 0;
+    color: #999;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* fin imagen */
 
 .inputsContainer {
     flex: 2;

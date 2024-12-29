@@ -1,147 +1,145 @@
-/* General Styles */
+/* ProdForm.module.css */
+
 .addProd {
-    width: 600px;
-    max-width: 100%;
-    min-height: 500px;
-    margin: auto;
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 20px;
-    background: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    font-family: 'Arial', sans-serif;
-    
+    font-family: Arial, sans-serif;
 }
 
 .addProd h2 {
-    font-size: 24px;
-    color: #fff;
-    margin-bottom: 10px;
     text-align: center;
-    background-color: #357abd;
-    width: 100%;
+    margin-bottom: 20px;
+    font-size: 24px;
 }
 
 .infoContainer {
-    width: 100%;
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
     gap: 20px;
-    position: relative;
-    width: 100%;
-}
-.inputsContainer label {
-    position: absolute;
-    top: 16px;
-    left: 12px;
-    transition: 0.3s;
+    justify-content: space-between;
 }
 
-
-/* imagen */
 .divImage {
-    flex: 1;
-    height: 200px;
-    background-color: #f4f4f4;
-    border: 2px dashed #ccc;
-    border-radius: 10px;
+    flex: 1 1 300px;
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    font-size: 14px;
-    color: #797474;
-    overflow: hidden;
-    position: relative; /* Para un mejor control de la imagen */
+    border: 1px dashed #ccc;
+    padding: 10px;
+    background-color: #f9f9f9;
 }
 
 .divImage img {
-    max-width: 90%; /* Limita el ancho máximo */
-    max-height: 90%; /* Limita la altura máxima */
-    object-fit: contain; /* Mantiene la proporción de la imagen */
-    border-radius: 5px; /* Opcional: redondea las esquinas de la imagen */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Añade un ligero efecto de sombra */
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
 }
-
-.divImage p {
-    margin: 0;
-    padding: 0;
-    color: #999;
-    font-size: 14px;
-    text-align: center;
-}
-
-/* fin imagen */
 
 .inputsContainer {
-    flex: 2;
+    flex: 2 1 600px;
     display: flex;
     flex-direction: column;
+    gap: 20px;
+}
+
+.responsiveForm {
+    display: flex;
+    flex-wrap: wrap;
     gap: 15px;
 }
 
-.inputsContainer input,
-.inputsContainer textarea,
-.inputsContainer button {
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.column {
+    flex: 1 1 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.column input, 
+.column textarea, 
+.column select {
     width: 100%;
-    padding: 12px;
-    font-size: 16px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-    color: #333;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
 }
 
-.inputsContainer input:focus,
-.inputsContainer textarea:focus {
-    border-color: #4a90e2;
-    outline: none;
-    background-color: #fff;
-}
-
-.inputsContainer textarea {
+textarea {
     resize: none;
 }
 
-.inputsContainer button {
-    padding: 12px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #4a90e2;
+button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    font-size: 16px;
 }
 
-.inputsContainer button:hover {
-    background-color: #357abd;
+button:hover {
+    background-color: #0056b3;
 }
 
-/* Responsive Design */
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: -5px;
+}
+
+.itemInputs {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.itemsCategoryAndDistribuitor{
+    display: flex;
+    flex-direction: column;
+    /* background-color: red; */
+}
+
+.itemsCategory{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+}
+.itemDistribuitor{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+}
+.botonX{
+    background-color: rgba(255, 0, 0, 0.712);
+}
+/* Responsiveness */
 @media (max-width: 768px) {
-    .addProd {
-        padding: 15px;
-        min-height: 440px;
-    }
-
     .infoContainer {
         flex-direction: column;
-        gap: 15px;
-        /* background-color: red; */
-        /* overflow-y: scroll; */
     }
 
-    .divImage {
-        display: none;
+    .responsiveForm {
+        flex-direction: column;
     }
 
-    .inputsContainer {
-        max-height: 395px; /* Altura limitada en pantallas pequeñas */
-        overflow-y: auto; /* Habilita el scroll vertical */
-        padding-right: 10px; /* Añade espacio para el scroll */
+    .row {
+        flex-direction: column;
     }
 }

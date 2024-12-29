@@ -74,7 +74,8 @@ const ProdManagement = () => {
                     <option value="">Globales </option>
                     <option value="">Promociones  </option>
                 </select>
-                <button className={p.filterSelect} onClick={() => setIsOpen(prev => !prev)}>Agregar Producto</button>
+                <div className={p.filterSelect} onClick={() => setIsOpen(prev => !prev)}>{
+                    !isOpen ? 'Agregar Producto' : 'Cerrar Formulario'}</div>
                 <div >
                     <input
                         type="text"
@@ -87,7 +88,7 @@ const ProdManagement = () => {
                 </div>
             </div>
 
-            {isOpen && <Modal isOpen={isOpen} toggleOpen={toggleOpen} children={<ProdForm />} />}
+            {isOpen && <ProdForm />}
 
             <div className={p.cardContainer}>
                 {filteredProducts?.map(({ id, image, name, description, stock, minStock, price }) => (

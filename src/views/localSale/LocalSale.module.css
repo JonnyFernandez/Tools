@@ -1,31 +1,157 @@
-@import '../butget/Butget.module.css'; 
+.home {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    font-family: 'Arial', sans-serif;
+}
 
-/* Añadir estilos específicos si es necesario */
+.card {
+    width: 90%;
+    max-width: 1200px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
 
-.discount {
+.title {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.inputGroup {
     display: flex;
     align-items: center;
-    margin-top: 10px;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.inputGroup input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.tableContainer {
+    overflow-x: auto;
+    margin-bottom: 20px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.table th, .table td {
+    text-align: left;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+}
+
+.table th {
+    background-color: #f4f4f4;
+    color: #555;
+}
+
+.addButton, .deleteButton {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.addButton {
+    background-color: #4caf50;
+}
+
+.deleteButton {
+    background-color: #f44336;
+}
+
+.addButton:hover {
+    background-color: #45a049;
+}
+
+.deleteButton:hover {
+    background-color: #e53935;
+}
+
+.paymentMethods {
+    margin: 20px 0;
+}
+
+.paymentMethods h4 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.paymentMethods label {
+    margin-right: 15px;
+    font-size: 16px;
+}
+
+.discount {
+    margin-bottom: 20px;
 }
 
 .discount input {
     margin-left: 10px;
-    padding: 5px;
-    border: 1px solid #007bff;
-    border-radius: 8px;
-    width: 100px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-.paymentMethods {
-    margin: 1rem 0;
+.total {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    background-color: #e4d9d9;
+
 }
 
-.paymentMethods label {
-    margin-right: 1rem;
+.pep h4 {
+    color: #007BFF;
+}
+
+.pep span {
+    display: block;
+    margin-top: 10px;
+    color: #2f7405;
+    font-size: 20px;
+}
+
+.completeButton {
+    background-color: #28a745;
+    width: 100%;
+    color: white;
+    padding: 10px;
+    margin-top: 20px;
     font-size: 1rem;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
 }
 
-.paymentMethods input {
-    margin-right: 0.5rem;
+.completeButton:hover {
+    background-color: #218838;
+}
+
+.headerInputs{
+    /* background-color: red; */
+    display: flex;
+    justify-content:space-around;
+    margin-bottom: 10px;
 }

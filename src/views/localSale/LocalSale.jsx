@@ -5,7 +5,15 @@ import { getProd } from '../../redux/productSlice';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import exportCartToPDF from '../../utils/makePdf';
+
+
+
+
+
+
 const LocalSale = () => {
+    const currentDate = new Date();
 
     const dispatch = useDispatch()
     const info = apiProd()
@@ -16,8 +24,11 @@ const LocalSale = () => {
 
     const [cart, setCart] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
-    const [discount, setDiscount] = useState(0);
-    const [paymentMethod, setPaymentMethod] = useState(''); // 'cash' o 'electronic'
+    const [discount, setDiscount] = useState('');
+
+    const [paymentMethod, setPaymentMethod] = useState('');
+    const [pay, setPay] = useState('');
+    const [showInputs, setShowInputs] = useState(false);
 
 
     // Estado del formulario de producto
@@ -93,6 +104,12 @@ const LocalSale = () => {
         const subtotal = calculateSubTotal();
         return subtotal - (subtotal * discount) / 100;
     };
+    // Calcular el total con descuento
+    const calculateTurned = () => {
+        const totalWithDiscount = calculateTotalWithDiscount();
+        let aux = pay ? pay - totalWithDiscount : 0
+        return aux;
+    };
 
     // Eliminar un producto del carrito
     const removeFromCart = (id) => {
@@ -102,10 +119,20 @@ const LocalSale = () => {
     // Manejar cambio en el método de pago
     const handlePaymentMethodChange = (method) => {
         setPaymentMethod(method);
+        if (method === 'cash') {
+            setShowInputs(true)
+        } else {
+            setShowInputs(false)
+        }
+
     };
 
-    const data = { 'cart': cart, 'total-w-discount': calculateTotalWithDiscount(), 'PaymentMethod': paymentMethod, 'total': calculateSubTotal(), 'discount': discount, 'user': '', 'date': '' }
+    const data = { 'cart': cart, 'total-w-discount': calculateTotalWithDiscount(), 'PaymentMethod': paymentMethod, 'total': calculateSubTotal(), 'discount': discount, 'user': '', 'date': currentDate.toLocaleDateString(), 'paymentWith': pay, 'resPayment': calculateTurned() }
     console.log(data);
+
+    const handleExportPDF = () => {
+        exportCartToPDF(cart);
+    };
 
 
     return (
@@ -126,8 +153,8 @@ const LocalSale = () => {
                     </div>
                 </div>
 
-                <div>
-                    <form onSubmit={handleAddToCart}>
+                <div >
+                    <form onSubmit={handleAddToCart} className={x.headerInputs}>
                         <input
                             type="text"
                             name="name"
@@ -259,17 +286,41 @@ const LocalSale = () => {
 
                 {/* Totales */}
                 <div className={x.total}>
-                    <h4>Total Parcial: ${calculateSubTotal().toFixed(2)}</h4>
-                    <div className={x.discount}>
-                        <label>Descuento (%): </label>
-                        <input
-                            type="number"
-                            value={discount}
-                            onChange={(e) => setDiscount(parseFloat(e.target.value) || 0)}
-                        />
+                    {
+                        showInputs && (
+                            <div className={x.discount}>
+
+                                <label>Descuento (%): </label>
+                                <input
+                                    type="number"
+                                    value={discount}
+                                    placeholder='Descuento (%)'
+                                    onChange={(e) => setDiscount(parseFloat(e.target.value) || 0)}
+                                />
+                                <label>Pago con ($): </label>
+                                <input
+                                    type="number"
+                                    value={pay}
+                                    onChange={(e) => setPay(parseFloat(e.target.value))}
+                                    placeholder='¿Con cuanto paga?'
+                                />
+                                <span>Vuelto: ${calculateTurned().toFixed(2)}</span>
+
+                            </div>
+                        )
+                    }
+
+
+                    <div className={x.pep}>
+                        <h4>MontoTotal: ${calculateSubTotal().toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</h4>
+                        {showInputs && <span>Monto Off: ${calculateTotalWithDiscount().toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>}
                     </div>
-                    <h4>Total con Descuento: ${calculateTotalWithDiscount().toFixed(2)}</h4>
                 </div>
+
+                <button className={x.completeButton} onClick={handleExportPDF}>Done</button>
+
+
+
             </div>
         </div>
     );
